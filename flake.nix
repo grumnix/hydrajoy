@@ -1,6 +1,6 @@
 {
   inputs = rec {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     flake-utils.url = "github:numtide/flake-utils";
 
     hydrajoy_src.url = "github:yomboprime/hydrajoy";
@@ -8,7 +8,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, hydrajoy_src }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem ["i686-linux" "x86_64-linux"] (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
